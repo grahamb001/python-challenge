@@ -9,7 +9,6 @@ budgetDataCsv = os.path.join("Resources", "budget_data.csv")
 
 with open(budgetDataCsv, 'r') as csvfile:
     budgetData = pd.read_csv(csvfile, delimiter=',')
-    #header = next(budgetData)
 
     for row in budgetData:
         months = budgetData["Revenue"].count()
@@ -30,10 +29,12 @@ with open(budgetDataCsv, 'r') as csvfile:
     print("Greatest Increase in Profits: " + str(increaseDate) + " ($" +  str(maxRevenue) + ")") 
     print("Greatest Decrease in Profits: " + str(decreaseDate) + " ($" +  str(minRevenue) + ")")
 
-with open("FinancialAnalysis.txt", "w") as text_file:
-        text_file.write("Financial Analysis         "
-        "Total Months: " + str(months) + "      "
-        +"Total: $" + str(totalNet)+ "      "          
-        +"Average Change: " + "$" + str(averageChange)+ "     "           
-        +"Greatest Increase in Profits: " + str(increaseDate) + " ($" +  str(maxRevenue) + ")"+ "      "           
-        +"Greatest Decrease in Profits: " + str(decreaseDate) + " ($" +  str(minRevenue) + ")")          
+f = open("FinancialAnalysis.txt", "w")
+f.write("Financial Analysis"+ "\n")
+f.write("--------------------------------------------" +"\n")
+f.write("Total Months: " + str(months)+ "\n")
+f.write("Total: $" + str(totalNet)+ "\n")    
+f.write("Average Change: " + "$" + str(averageChange)+ "\n")          
+f.write("Greatest Increase in Profits: " + str(increaseDate) + " ($" +  str(maxRevenue) + ")"+ "\n")           
+f.write("Greatest Decrease in Profits: " + str(decreaseDate) + " ($" +  str(minRevenue) + ")")          
+f.close()
